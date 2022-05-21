@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+import Navigation from 'components/Navigation/index';
+import Home from 'pages/Home/Home';
+import CreateMessage from 'pages/CreateMessage/CreateMessage';
+import Message from 'pages/Message/Message';
+import Footer from 'components/Footer/Footer';
+
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import ContentBox from './components/ContentBox';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:1337/graphql',
+  cache: new InMemoryCache()
+});
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <Navigation />
+        <ContentBox>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-message" element={<CreateMessage />} />
+            <Route path="/messages/:id" element={<Message />} />
+          </Routes>
+        </ContentBox>
+        <Footer />
+      </Router>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
