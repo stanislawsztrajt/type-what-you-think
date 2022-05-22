@@ -1,1 +1,1 @@
-export const a = 'a';
+export { default } from './CreateMessage';

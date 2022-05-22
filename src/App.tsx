@@ -1,17 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Navigation from 'components/Navigation/index';
-import Home from 'pages/Home/Home';
-import CreateMessage from 'pages/CreateMessage/CreateMessage';
-import Message from 'pages/Message/Message';
-import Footer from 'components/Footer/Footer';
-
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import ContentBox from './components/ContentBox';
 
+import Navigation from 'components/Navigation';
+import Home from 'pages/Home';
+import CreateMessage from 'pages/CreateMessage';
+import Message from 'pages/Message';
+import ToDoList from 'pages/ToDoList';
+import Footer from 'components/Footer';
+
+import API_URL from 'constants/api';
+
 const client = new ApolloClient({
-  uri: 'http://localhost:1337/graphql',
+  uri: `${API_URL}/graphql`,
   cache: new InMemoryCache()
 });
 
@@ -25,6 +27,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/create-message" element={<CreateMessage />} />
             <Route path="/messages/:id" element={<Message />} />
+            <Route path="/to-do-list" element={<ToDoList />} />
           </Routes>
         </ContentBox>
         <Footer />

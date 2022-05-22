@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
-import { Imessage } from 'src/types/interfaces';
+import { Imessage } from 'types/interfaces';
 
 interface ImessageQuery {
   message: Imessage;

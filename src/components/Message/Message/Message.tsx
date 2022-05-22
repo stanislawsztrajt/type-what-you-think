@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Imessage } from 'src/types/interfaces';
+import { Imessage } from 'types/interfaces';
 
 type Props = {
   message: Imessage;

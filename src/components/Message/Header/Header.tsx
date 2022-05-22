@@ -1,10 +1,10 @@
-import React from 'react';
+import { VFC } from 'react';
 
 type Props = {
   text?: string;
 };
 
-const Header: React.FC<Props> = ({ text }) => {
+const Header: VFC<Props> = ({ text }: Props) => {
   return <header className="w-full text-6xl text-text font-medium">{text}</header>;
 };
 

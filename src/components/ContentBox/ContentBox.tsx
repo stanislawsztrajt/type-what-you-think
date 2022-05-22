@@ -1,10 +1,10 @@
-import { FC, PropsWithChildren, ReactNode } from 'react';
+import { VFC, PropsWithChildren, ReactNode } from 'react';
 
-interface propsheader {
+interface Props {
   children: ReactNode;
 }
 
-const ContentBox: FC<PropsWithChildren<propsheader>> = ({ children }) => {
+const ContentBox: VFC<PropsWithChildren<Props>> = ({ children }: Props) => {
   return (
     <main className="w-full">
       <div className="py-4 w-full flex justify-center">

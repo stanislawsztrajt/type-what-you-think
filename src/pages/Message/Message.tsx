@@ -8,8 +8,18 @@ import useMessage from './Message.hook';
 const Message: FC = () => {
   const { loading, error, data } = useMessage();
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error :(</div>;
+  if (loading)
+    return (
+      <div className="w-full h-full flex justify-center items-center text-text text-5xl">
+        Loading...
+      </div>
+    );
+  if (error)
+    return (
+      <div className="w-full h-full flex justify-center items-center text-text text-5xl">
+        Error with server :(
+      </div>
+    );
 
   return (
     <>

@@ -1,56 +1,19 @@
-import { useState, FC } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useMutation, gql } from '@apollo/client';
-import { useNavigate } from "react-router-dom";
-
-const CREATE_MESSAGE = gql`
-  mutation createMessage($title: String!, $message: String!){
-    createMessage(input: { data: { title: $title, message: $message } }) {
-      message {
-        title
-        message
-      }
-    }
-  }
-`;
+import { FC } from 'react';
+import useCreateMessage from './CreateMessage.hook';
 
 const CreateMessage: FC = () => {
-    const navigate = useNavigate();
-    const [createMessage] = useMutation(CREATE_MESSAGE);
-    const [loading, setLoading] = useState<boolean>(false);
+  const { loading, handleSubmit, handleChange, handleBlur, values, touched, errors } =
+    useCreateMessage();
 
-    const { handleSubmit, handleChange, values, handleBlur, touched, errors } = useFormik({
-      initialValues: {
-        title: '',
-        message: ''
-      },
-      validationSchema: Yup.object({
-        title: Yup.string()
-          .min(10, 'Title have to contain at least 10 characters')
-          .max(500, 'Title can contain up to 500 characters')
-          .required('Field required')
-          .trim(),
-        message: Yup.string()
-          .min(10, 'Title have to contain at least 10 characters')
-          .max(5000, 'Title can contain up to 5000 characters')
-          .required('Field required')
-          .trim()
-      }),
-      onSubmit: async ({ title, message }) => {
-        setLoading(true);
-        createMessage({variables: { title, message }});
-
-        navigate('/');
-        return navigate(0);
-      }
-    });
+  if (loading)
+    return (
+      <div className="w-full h-full flex justify-center items-center text-text text-5xl">
+        Loading...
+      </div>
+    );
 
   return (
     <>
-      {loading ? 
-        "loading..." 
-      :
       <form
         onSubmit={handleSubmit}
         className=" text-text flex flex-col justify-center items-center h-full w-full"
@@ -69,7 +32,9 @@ const CreateMessage: FC = () => {
             onBlur={handleBlur}
             value={values.title}
           />
-          {touched.title ? <div className="w-11/12 xl:w-1/2 text-red-500">{errors.title}</div> : null}
+          {touched.title ? (
+            <div className="w-11/12 xl:w-1/2 text-red-500">{errors.title}</div>
+          ) : null}
           <div></div>
         </div>
         <div className="flex flex-col items-center w-full mt-6">
@@ -96,7 +61,6 @@ const CreateMessage: FC = () => {
           className="bg-background shadow-xl font-semibold w-11/12 xl:w-1/2 h-12 p-2 text-2xl mt-6 cursor-pointer hover:opacity-80 duration-150 outline-blue-400"
         />
       </form>
-      }
     </>
   );
 };

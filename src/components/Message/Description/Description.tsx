@@ -1,10 +1,10 @@
-import React from 'react';
+import { VFC } from 'react';
 
 type Props = {
   text?: string;
 };
 
-const Description: React.FC<Props> = ({ text }) => {
+const Description: VFC<Props> = ({ text }: Props) => {
   return <p className="text-2xl text-text">{text}</p>;
 };
 
