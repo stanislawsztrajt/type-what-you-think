@@ -38,7 +38,7 @@ const CreateMessage: FC = () => {
           <div></div>
         </div>
         <div className="flex flex-col items-center w-full mt-6">
-          <label htmlFor="title" className="w-11/12 xl:w-1/2 mb-1 text-2xl font-semibold">
+          <label htmlFor="message" className="w-11/12 xl:w-1/2 mb-1 text-2xl font-semibold">
             Message
           </label>
           <textarea

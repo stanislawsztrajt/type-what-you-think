@@ -1,22 +1,14 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+
 import { Imessage } from 'types/interfaces';
+import GET_MESSAGES from 'api/queries/GetMessages';
 
 interface ImessagesQuery {
   messages: Imessage[];
 }
 
-const MESSAGES = gql`
-  {
-    messages {
-      id
-      title
-      message
-    }
-  }
-`;
-
-const useMessages = () => {
-  const { loading, error, data } = useQuery<ImessagesQuery>(MESSAGES);
+const useHome = () => {
+  const { loading, error, data } = useQuery<ImessagesQuery>(GET_MESSAGES);
 
   return {
     loading,
@@ -25,4 +17,4 @@ const useMessages = () => {
   };
 };
 
-export default useMessages;
+export default useHome;

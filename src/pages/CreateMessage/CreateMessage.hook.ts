@@ -1,19 +1,10 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
-const CREATE_MESSAGE = gql`
-  mutation createMessage($title: String!, $message: String!) {
-    createMessage(input: { data: { title: $title, message: $message } }) {
-      message {
-        title
-        message
-      }
-    }
-  }
-`;
+import CREATE_MESSAGE from 'api/queries/CreateMessage';
 
 const useCreateMessage = () => {
   const navigate = useNavigate();

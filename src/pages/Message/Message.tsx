@@ -7,25 +7,32 @@ import useMessage from './Message.hook';
 
 const Message: FC = () => {
   const { loading, error, data } = useMessage();
+  console.log(data);
 
   if (loading)
     return (
-      <div className="w-full h-full flex justify-center items-center text-text text-5xl">
+      <div
+        data-testid="loading"
+        className="w-full h-full flex justify-center items-center text-text text-5xl"
+      >
         Loading...
       </div>
     );
   if (error)
     return (
-      <div className="w-full h-full flex justify-center items-center text-text text-5xl">
+      <div
+        data-testid="error"
+        className="w-full h-full flex justify-center items-center text-text text-5xl"
+      >
         Error with server :(
       </div>
     );
 
   return (
-    <>
+    <div data-testid="message">
       <Header text={data?.message.title} />
       <Description text={data?.message.message} />
-    </>
+    </div>
   );
 };
 

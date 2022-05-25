@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigation: VFC = () => {
+const Footer: VFC = () => {
   return (
     <footer className="font-thin text-center w-full p-1 text-lg text-black bg-white">
       Page has been created for tests by me :o
@@ -12,4 +12,4 @@ const Navigation: VFC = () => {
   );
 };
 
-export default Navigation;
+export default Footer;
