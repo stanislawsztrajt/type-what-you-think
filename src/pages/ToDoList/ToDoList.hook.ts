@@ -39,8 +39,8 @@ const useToDoList = () => {
     },
     validationSchema: Yup.object({
       todo: Yup.string()
-        .min(10, 'Title have to contain at least 10 characters')
-        .max(500, 'Title can contain up to 500 characters')
+        .min(10, 'Todo have to contain at least 10 characters')
+        .max(500, 'Todo can contain up to 500 characters')
         .required('Field required')
         .trim()
     }),

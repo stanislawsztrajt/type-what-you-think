@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "experimentalStudio": true,
+  "env": {
+    "titleHome": "eaneo arsteoearstneio neioo nei neioeaneo arsteoearstneio neioo nei neio",
+    "messageHomePath": "messages/6288f3bc8c627f3e1cddb604",
+    "title": "rem, corporis, rem iure repellendus. Nemo earum ea possimus accusantium?",
+    "messagePath": "messages/6286a6949142c01dec4b592f"
+  }
+}

@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     return <Message message={message} key={message.id} />;
   });
 
-  return <>{messages}</>;
+  return <div className='flex flex-col-reverse gap-4'>{messages}</div>;
 };
 
 export default Home;

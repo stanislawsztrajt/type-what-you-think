@@ -27,7 +27,7 @@ const ToDoList: FC = () => {
         className="text-text bg-background mt-4 text-xl p-2 w-11/12 xl:w-1/2"
         key={Math.random()}
       >
-        <button onClick={() => deleteTodo(todo)}>
+        <button id='deleteToDo' onClick={() => deleteTodo(todo)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 -mb-1 text-red-500"
@@ -65,6 +65,7 @@ const ToDoList: FC = () => {
           <input
             className="bg-background shadow w-11/12 xl:w-1/2 h-12 p-2 text-2xl outline-blue-400"
             type="text"
+            id="todo"
             name="todo"
             placeholder="I will go..."
             maxLength={500}
@@ -77,6 +78,7 @@ const ToDoList: FC = () => {
         </div>
 
         <input
+          id='createToDo'
           type="submit"
           value="Create to do"
           className="bg-background shadow-xl font-semibold w-11/12 xl:w-1/2 h-12 p-2 text-2xl mt-6 cursor-pointer hover:opacity-80 duration-150 outline-blue-400"

@@ -22,9 +22,10 @@ const Message: FC = () => {
     return (
       <div
         data-testid="error"
+        id="error"
         className="w-full h-full flex justify-center items-center text-text text-5xl"
       >
-        Error with server :(
+        Cannot find message :(
       </div>
     );
 
