@@ -9,11 +9,10 @@ import CreateMessage from 'pages/CreateMessage';
 import Message from 'pages/Message';
 import ToDoList from 'pages/ToDoList';
 import Footer from 'components/Footer';
-
-import API_URL from 'constants/api';
+import { FooterThemeContext } from 'contexts/FooterContext'
 
 const client = new ApolloClient({
-  uri: `${API_URL}/graphql`,
+  uri: process.env.REACT_APP_API_URL,
   cache: new InMemoryCache()
 });
 
@@ -22,6 +21,7 @@ const App: React.FC = () => {
     <ApolloProvider client={client}>
       <Router>
         <Navigation />
+        
         <ContentBox>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -30,7 +30,10 @@ const App: React.FC = () => {
             <Route path="/to-do-list" element={<ToDoList />} />
           </Routes>
         </ContentBox>
-        <Footer />
+
+        <FooterThemeContext>
+          <Footer />
+        </FooterThemeContext>
       </Router>
     </ApolloProvider>
   );

@@ -36,7 +36,7 @@ test('shuold render error', async () => {
 
   await waitFor(() => getByTestId('error'));
 
-  expect(getByText(/error/i)).toBeInTheDocument();
+  expect(getByText(/Cannot find message/i)).toBeInTheDocument();
 });
 
 test('should render Message', async () => {
@@ -61,7 +61,7 @@ test('should render Message', async () => {
     </MockedProvider>
   );
 
-  await waitFor(() => getByTestId('message'));
+  await waitFor(() => getByTestId('messagePage'));
 
   expect(getByText(/Hi it's title of this message/i)).toBeInTheDocument();
 });

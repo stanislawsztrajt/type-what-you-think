@@ -30,7 +30,7 @@ const Message: FC = () => {
     );
 
   return (
-    <div data-testid="message">
+    <div data-testid="messagePage">
       <Header text={data?.message.title} />
       <Description text={data?.message.message} />
     </div>
